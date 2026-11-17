@@ -1,0 +1,708 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  LEARNER
+  INSTITUTION
+  VOLUNTEER
+  DONOR
+  ADMIN
+}
+
+enum VerificationStatus {
+  PENDING
+  VERIFIED
+  REJECTED
+}
+
+enum UrgencyLevel {
+  URGENT
+  NEEDED
+  ALMOST_COMPLETE
+}
+
+enum NeedCategory {
+  BOOKS
+  NOTEBOOKS
+  STATIONERY
+  SCHOOL_BAGS
+  EDUCATIONAL_KITS
+  COMPUTERS
+  TABLETS
+  PROJECTORS
+  TEACHING
+  MENTORING
+}
+
+enum NeedStatus {
+  OPEN
+  PARTIALLY_FULFILLED
+  FULFILLED
+  CLOSED
+}
+
+enum DonationStatus {
+  INITIATED
+  CONFIRMED
+  INSTITUTION_RECEIVED
+  INSTITUTION_VERIFIED
+  FULFILLED
+}
+
+enum SessionStatus {
+  SCHEDULED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+enum RequestStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  COMPLETED
+  CANCELLED
+}
+
+enum QuestionType {
+  MCQ
+  TRUE_FALSE
+  NUMERICAL
+}
+
+enum DoubtStatus {
+  OPEN
+  ANSWERED
+}
+
+enum CertificateStatus {
+  VALID
+  REVOKED
+}
+
+enum ReportStatus {
+  PENDING
+  REVIEWED
+  RESOLVED
+}
+
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  name         String
+  passwordHash String
+  role         UserRole  @default(LEARNER)
+  avatar       String?
+  isVerified   Boolean   @default(false)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  institution  Institution?
+  volunteer    Volunteer?
+  learner      Learner?
+  donations    Donation[]
+  doubtsAnswered Doubt[]   @relation("TeacherAnswers")
+  reports      Report[]
+  notifications Notification[]
+  auditLogs    AuditLog[]
+  videoReports VideoReport[]
+
+  @@index([email])
+  @@index([role])
+}
+
+model Institution {
+  id                 String             @id @default(cuid())
+  userId             String             @unique
+  user               User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  orgName            String
+  registrationNumber String
+  state              String
+  city               String
+  address            String
+  contactPerson      String
+  phone              String
+  email              String
+  childCount         Int                @default(0)
+  verificationStatus VerificationStatus @default(PENDING)
+  verificationDocUrl String?
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+
+  learners     Learner[]
+  needs        InstitutionNeed[]
+  sessions     Session[]
+  certificates Certificate[]
+
+  @@index([verificationStatus])
+}
+
+model Volunteer {
+  id                 String             @id @default(cuid())
+  userId             String             @unique
+  user               User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  fullName           String
+  bio                String?
+  skills             String             // comma-separated or json string
+  subjects           String             // comma-separated or json string
+  classes            String             // comma-separated (e.g. "6,7,8")
+  availability       String             // e.g. "Weekends, Sundays"
+  mode               String             @default("online") // online, offline, both
+  experienceYears    Int                @default(0)
+  verificationStatus VerificationStatus @default(PENDING)
+  contributionScore  Int                @default(100)
+  totalHours         Float              @default(0)
+  totalSessions      Int                @default(0)
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+
+  requests     VolunteerRequest[]
+  sessions     Session[]
+  certificates Certificate[]
+
+  @@index([verificationStatus])
+}
+
+model Learner {
+  id            String          @id @default(cuid())
+  userId        String          @unique
+  user          User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  displayName   String
+  classLevel    Int             // 6, 7, 8, 9, 10
+  institutionId String
+  institution   Institution     @relation(fields: [institutionId], references: [id], onDelete: Cascade)
+  rollAlias     String          // privacy-safe identifier, e.g. "LRN-804"
+  streakDays    Int             @default(1)
+  lastActiveAt  DateTime        @default(now())
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+
+  progress      LearningProgress[]
+  quizAttempts  QuizAttempt[]
+  doubts        Doubt[]
+  videoProgress LearnerVideoProgress[]
+  savedVideos   SavedVideo[]
+
+  @@index([institutionId])
+  @@index([classLevel])
+}
+
+model Class {
+  id          String    @id @default(cuid())
+  classNumber Int       @unique // 6, 7, 8, 9, 10
+  title       String
+  description String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  subjects    Subject[]
+}
+
+model Subject {
+  id              String    @id @default(cuid())
+  classId         String
+  class           Class     @relation(fields: [classId], references: [id], onDelete: Cascade)
+  name            String
+  code            String    // e.g. "MATH-8"
+  bookName        String?   // e.g. "Ganita Prakash"
+  academicSession String    @default("2026-27")
+  board           String    @default("CBSE / NCERT")
+  medium          String    @default("English / Hindi")
+  textbookEdition String    @default("2026-27")
+  order           Int       @default(1)
+  icon            String?
+  color           String?
+  description     String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  chapters        Chapter[]
+  doubts          Doubt[]
+
+  @@unique([classId, code])
+}
+
+model Chapter {
+  id                String    @id @default(cuid())
+  subjectId         String
+  subject           Subject   @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  chapterNumber     Int
+  title             String
+  theme             String?   // e.g. "THEME A — INDIA AND THE WORLD: LAND AND THE PEOPLE"
+  academicSession   String    @default("2026-27")
+  board             String    @default("CBSE / NCERT")
+  medium            String    @default("English / Hindi")
+  textbookName      String?   @default("NCERT")
+  textbookEdition   String    @default("2026-27")
+  officialSourceUrl String?   @default("https://ncert.nic.in/textbook.php")
+  syllabusStatus    String    @default("CURRENT_2026_27") // CURRENT_2026_27, PREVIOUS_EDITION, DROPPED_RATIONALIZED
+  order             Int       @default(1)
+  description       String?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+
+  lessons           Lesson[]
+  notes             Note[]
+  questions         Question[]
+  quizzes           Quiz[]
+  doubts            Doubt[]
+  topics            Topic[]
+  videos            LearningVideo[]
+}
+
+model Lesson {
+  id              String    @id @default(cuid())
+  chapterId       String
+  chapter         Chapter   @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+  topicId         String?
+  topic           Topic?    @relation(fields: [topicId], references: [id], onDelete: SetNull)
+  lessonNumber    Int
+  title           String
+  durationMinutes Int       @default(15)
+  videoUrl        String
+  videoSource     String    @default("YouTube Education")
+  lectureType     String    @default("Concept Explanation")
+  mappingStatus   String    @default("VERIFIED")
+  objectivesJson  String    @default("[]")
+  isPublished     Boolean   @default(true)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  progress        LearningProgress[]
+}
+
+model Note {
+  id              String    @id @default(cuid())
+  chapterId       String
+  chapter         Chapter   @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+  title           String
+  contentMarkdown String
+  keyFormulas     String?
+  summary         String?
+  pdfUrl          String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
+
+model Question {
+  id            String       @id @default(cuid())
+  chapterId     String
+  chapter       Chapter      @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+  type          QuestionType @default(MCQ)
+  questionText  String
+  optionsJson   String       // JSON array of strings
+  correctAnswer String
+  explanation   String
+  difficulty    String       @default("Medium") // Easy, Medium, Hard
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+}
+
+model Quiz {
+  id               String        @id @default(cuid())
+  chapterId        String
+  chapter          Chapter       @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+  title            String
+  passScore        Int           @default(7)
+  timeLimitMinutes Int           @default(15)
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+
+  attempts         QuizAttempt[]
+}
+
+model QuizAttempt {
+  id                   String   @id @default(cuid())
+  learnerId            String
+  learner              Learner  @relation(fields: [learnerId], references: [id], onDelete: Cascade)
+  quizId               String
+  quiz                 Quiz     @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  score                Int
+  maxScore             Int      @default(10)
+  accuracyPercentage   Float
+  weakAreasJson        String   @default("[]")
+  recommendationsJson  String   @default("[]")
+  completedAt          DateTime @default(now())
+
+  @@index([learnerId])
+  @@index([quizId])
+}
+
+model LearningProgress {
+  id               String   @id @default(cuid())
+  learnerId        String
+  learner          Learner  @relation(fields: [learnerId], references: [id], onDelete: Cascade)
+  lessonId         String
+  lesson           Lesson   @relation(fields: [lessonId], references: [id], onDelete: Cascade)
+  isCompleted      Boolean  @default(false)
+  watchTimeSeconds Int      @default(0)
+  lastAccessedAt   DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@unique([learnerId, lessonId])
+}
+
+model Doubt {
+  id               String      @id @default(cuid())
+  learnerId        String
+  learner          Learner     @relation(fields: [learnerId], references: [id], onDelete: Cascade)
+  subjectId        String
+  subject          Subject     @relation(fields: [subjectId], references: [id], onDelete: Cascade)
+  chapterId        String
+  chapter          Chapter     @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+  question         String
+  imageUrl         String?
+  status           DoubtStatus @default(OPEN)
+  answer           String?
+  answeredByUserId String?
+  answeredBy       User?       @relation("TeacherAnswers", fields: [answeredByUserId], references: [id], onDelete: SetNull)
+  answeredAt       DateTime?
+  createdAt        DateTime    @default(now())
+
+  @@index([learnerId])
+  @@index([status])
+}
+
+model InstitutionNeed {
+  id                  String       @id @default(cuid())
+  institutionId       String
+  institution         Institution  @relation(fields: [institutionId], references: [id], onDelete: Cascade)
+  title               String
+  category            NeedCategory
+  classLevel          Int?         // e.g. 8 for Class 8
+  subject             String?
+  urgency             UrgencyLevel @default(NEEDED)
+  requiredQuantity    Int
+  fulfilledQuantity   Int          @default(0)
+  verifiedQuantity    Int          @default(0)
+  distributedQuantity Int          @default(0)
+  mode                String       @default("offline") // online or offline
+  location            String
+  description         String
+  status              NeedStatus   @default(OPEN)
+  createdAt           DateTime     @default(now())
+  updatedAt           DateTime     @updatedAt
+
+  volunteerRequests   VolunteerRequest[]
+  sessions            Session[]
+  donations           Donation[]
+
+  @@index([institutionId])
+  @@index([category])
+  @@index([urgency])
+  @@index([status])
+}
+
+model VolunteerRequest {
+  id               String         @id @default(cuid())
+  volunteerId      String
+  volunteer        Volunteer      @relation(fields: [volunteerId], references: [id], onDelete: Cascade)
+  needId           String
+  need             InstitutionNeed @relation(fields: [needId], references: [id], onDelete: Cascade)
+  subject          String
+  classLevel       Int
+  topic            String
+  preferredDate    DateTime
+  preferredTime    String
+  durationHours    Float          @default(2.0)
+  mode             String         @default("online")
+  status           RequestStatus  @default(PENDING)
+  matchScore       Int            @default(90)
+  matchReasonsJson String         @default("[]")
+  recurringType    String         @default("one_time") // one_time, weekly, biweekly, monthly
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+
+  session          Session?
+
+  @@index([volunteerId])
+  @@index([needId])
+  @@index([status])
+}
+
+model Session {
+  id                    String        @id @default(cuid())
+  institutionId         String
+  institution           Institution   @relation(fields: [institutionId], references: [id], onDelete: Cascade)
+  volunteerId           String
+  volunteer             Volunteer     @relation(fields: [volunteerId], references: [id], onDelete: Cascade)
+  requestId             String?       @unique
+  request               VolunteerRequest? @relation(fields: [requestId], references: [id], onDelete: SetNull)
+  needId                String?
+  need                  InstitutionNeed?  @relation(fields: [needId], references: [id], onDelete: SetNull)
+  title                 String
+  subject               String
+  classLevel            Int
+  scheduledStart        DateTime
+  durationMinutes       Int           @default(60)
+  mode                  String        @default("online")
+  meetingLinkOrRoom     String        @default("https://meet.shikshasetu.org/room-demo")
+  status                SessionStatus @default(SCHEDULED)
+  attendanceCount       Int           @default(0)
+  institutionFeedback   String?
+  volunteerFeedback     String?
+  verifiedByInstitution Boolean       @default(false)
+  createdAt             DateTime      @default(now())
+  updatedAt             DateTime      @updatedAt
+
+  certificate           Certificate?
+
+  @@index([institutionId])
+  @@index([volunteerId])
+  @@index([status])
+}
+
+model Donation {
+  id              String         @id @default(cuid())
+  donorId         String
+  donor           User           @relation(fields: [donorId], references: [id], onDelete: Cascade)
+  needId          String
+  need            InstitutionNeed @relation(fields: [needId], references: [id], onDelete: Cascade)
+  quantity        Int
+  category        NeedCategory
+  itemDescription String
+  notes           String?
+  trackingNumber  String?
+  status          DonationStatus @default(INITIATED)
+  initiatedAt     DateTime       @default(now())
+  confirmedAt     DateTime?
+  receivedAt      DateTime?
+  verifiedAt      DateTime?
+
+  @@index([donorId])
+  @@index([needId])
+  @@index([status])
+}
+
+model Certificate {
+  id                String            @id @default(cuid())
+  certificateNumber String            @unique // e.g. "CERT-SS-2026-8942"
+  volunteerId       String
+  volunteer         Volunteer         @relation(fields: [volunteerId], references: [id], onDelete: Cascade)
+  institutionId     String
+  institution       Institution       @relation(fields: [institutionId], references: [id], onDelete: Cascade)
+  sessionId         String?           @unique
+  session           Session?          @relation(fields: [sessionId], references: [id], onDelete: SetNull)
+  contributionType  String            // e.g. "Mathematics Teaching - Class 8"
+  hoursContributed  Float             @default(2.0)
+  sessionsCount     Int               @default(1)
+  issueDate         DateTime          @default(now())
+  verificationCode  String            @unique
+  qrCodeData        String
+  status            CertificateStatus @default(VALID)
+  createdAt         DateTime          @default(now())
+
+  @@index([certificateNumber])
+  @@index([volunteerId])
+  @@index([institutionId])
+}
+
+model CareerResource {
+  id                     String   @id @default(cuid())
+  title                  String
+  category               String   // Engineering, Medicine, Commerce, Law, Design, etc.
+  targetClass            String   @default("9-10")
+  summary                String
+  coreSkillsJson         String   @default("[]")
+  subjectsRecommendedJson String  @default("[]")
+  educationPathJson      String   @default("[]")
+  roadmapJson            String   @default("[]")
+  isPublished            Boolean  @default(true)
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+}
+
+model LifeSkill {
+  id              String   @id @default(cuid())
+  title           String
+  category        String   // digital_literacy, cyber_safety, spoken_english, financial_literacy
+  description     String
+  contentMarkdown String
+  videoUrl        String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String
+  message   String
+  link      String?
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+}
+
+model Report {
+  id               String       @id @default(cuid())
+  reportedByUserId String
+  reportedBy       User         @relation(fields: [reportedByUserId], references: [id], onDelete: Cascade)
+  entityType       String       // content, user, session
+  entityId         String
+  reason           String
+  details          String?
+  status           ReportStatus @default(PENDING)
+  createdAt        DateTime     @default(now())
+
+  @@index([status])
+}
+
+model AuditLog {
+  id          String   @id @default(cuid())
+  userId      String?
+  user        User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  action      String
+  entityType  String
+  entityId    String
+  detailsJson String   @default("{}")
+  ipAddress   String?  @default("127.0.0.1")
+  createdAt   DateTime @default(now())
+
+  @@index([entityType, entityId])
+}
+
+model Topic {
+  id                String   @id @default(cuid())
+  chapterId         String
+  chapter           Chapter  @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+  name              String
+  order             Int      @default(1)
+  description       String?
+  officialSourceUrl String?  @default("https://ncert.nic.in/textbook.php")
+  syllabusStatus    String   @default("CURRENT_2026_27")
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  videos      LearningVideo[]
+  lessons     Lesson[]
+
+  @@index([chapterId])
+  @@index([order])
+}
+
+model LearningVideo {
+  id                 String    @id @default(cuid())
+  topicId            String?
+  topic              Topic?    @relation(fields: [topicId], references: [id], onDelete: SetNull)
+  chapterId          String?
+  chapter            Chapter?  @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+  youtubeVideoId     String    @unique
+  youtubeUrl         String?
+  title              String
+  channelName        String
+  channelId          String?
+  thumbnailUrl       String
+  description        String?
+  source             String    @default("Magnet Brains")
+  sourceCourse       String?   // e.g. "Class 6th Maths NCERT (Ganita Prakash Book)"
+  academicYear       String    @default("2026-27")
+  lectureType        String    @default("Concept Explanation")
+  mappingStatus      String    @default("VERIFIED") // VERIFIED, PARTIAL MATCH, SUPPLEMENTARY, OUTDATED, UNMATCHED
+  mappingConfidence  Float     @default(100.0)
+  textbookName       String?   @default("NCERT")
+  textbookEdition    String?   @default("2026-27")
+  officialSourceUrl  String?   @default("https://ncert.nic.in/textbook.php")
+  syllabusStatus     String    @default("CURRENT_2026_27") // CURRENT_2026_27, PREVIOUS_EDITION, SUPPLEMENTARY, OUTDATED
+  playlistId         String?
+  playlistPosition   Int?
+  order              Int       @default(1)
+  videoStatus        String    @default("AVAILABLE") // AVAILABLE, UNAVAILABLE
+  publishedAt        DateTime?
+  language           String    @default("Hindi/English")
+  duration           String    @default("15m")
+  durationSeconds    Int       @default(900)
+  relevanceScore     Float     @default(85.0)
+  qualityScore       Float     @default(90.0)
+  scoreBreakdownJson String?
+  isRecommended      Boolean   @default(false)
+  isApproved         Boolean   @default(true)
+  isCurated          Boolean   @default(false)
+  viewCount          Int       @default(0)
+  likeCount          Int       @default(0)
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+
+  watchProgress      LearnerVideoProgress[]
+  savedBy            SavedVideo[]
+  reports            VideoReport[]
+
+  @@index([topicId])
+  @@index([chapterId])
+  @@index([youtubeVideoId])
+  @@index([isRecommended])
+  @@index([isApproved])
+}
+
+model TrustedChannel {
+  id           String   @id @default(cuid())
+  channelName  String
+  channelId    String   @unique
+  subjectsJson String   @default("[]")
+  classesJson  String   @default("[]")
+  priority     Int      @default(1)
+  status       String   @default("ACTIVE")
+  notes        String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([status])
+  @@index([priority])
+}
+
+model LearnerVideoProgress {
+  id                 String        @id @default(cuid())
+  learnerId          String
+  learner            Learner       @relation(fields: [learnerId], references: [id], onDelete: Cascade)
+  videoId            String
+  video              LearningVideo @relation(fields: [videoId], references: [id], onDelete: Cascade)
+  progressPercentage Float         @default(0)
+  watchTimeSeconds   Int           @default(0)
+  completed          Boolean       @default(false)
+  lastWatchedAt      DateTime      @default(now())
+  createdAt          DateTime      @default(now())
+  updatedAt          DateTime      @updatedAt
+
+  @@unique([learnerId, videoId])
+  @@index([learnerId])
+  @@index([videoId])
+}
+
+model SavedVideo {
+  id        String        @id @default(cuid())
+  learnerId String
+  learner   Learner       @relation(fields: [learnerId], references: [id], onDelete: Cascade)
+  videoId   String
+  video     LearningVideo @relation(fields: [videoId], references: [id], onDelete: Cascade)
+  createdAt DateTime      @default(now())
+
+  @@unique([learnerId, videoId])
+  @@index([learnerId])
+  @@index([videoId])
+}
+
+model VideoReport {
+  id        String        @id @default(cuid())
+  videoId   String
+  video     LearningVideo @relation(fields: [videoId], references: [id], onDelete: Cascade)
+  userId    String?
+  user      User?         @relation(fields: [userId], references: [id], onDelete: SetNull)
+  reason    String
+  details   String?
+  status    String        @default("PENDING")
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  @@index([videoId])
+  @@index([status])
+}
+

@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: 'class', theme: { extend: { 'colors': { 'on-primary': '#ffffff', 'on-background': '#111c2d', 'inverse-primary': '#88d982', 'surface-container': '#e7eeff', 'outline-variant': '#bfcaba', 'on-secondary-fixed-variant': '#004881', 'on-error': '#ffffff', 'slate-charcoal-dark': '#0F172A', 'tertiary-container': '#127f26', 'surface-container-low': '#f0f3ff', 'tertiary': '#006419', 'on-error-container': '#93000a', 'on-primary-fixed': '#002204', 'surface-dim': '#cfdaf2', 'tertiary-fixed-dim': '#78dc77', 'secondary': '#0060a8', 'surface-bright': '#f9f9ff', 'error-container': '#ffdad6', 'tertiary-fixed': '#94f990', 'trust-blue-light': '#E3F2FD', 'surface-container-highest': '#d8e3fb', 'surface-earth': '#F5F3EB', 'leaf-green-vibrant': '#4CAF50', 'on-tertiary': '#ffffff', 'surface-container-lowest': '#ffffff', 'primary': '#0d631b', 'on-tertiary-fixed': '#002204', 'secondary-container': '#47a1ff', 'error': '#ba1a1a', 'primary-fixed-dim': '#88d982', 'background': '#f9f9ff', 'inverse-on-surface': '#ecf1ff', 'secondary-fixed-dim': '#a2c9ff', 'surface-variant': '#d8e3fb', 'on-tertiary-fixed-variant': '#005313', 'on-surface-variant': '#40493d', 'surface-tint': '#1b6d24', 'on-primary-fixed-variant': '#005312', 'on-secondary-fixed': '#001c38', 'on-secondary': '#ffffff', 'outline': '#707a6c', 'on-surface': '#111c2d', 'secondary-fixed': '#d3e4ff', 'leaf-green-light': '#E8F5E9', 'primary-fixed': '#a3f69c', 'on-secondary-container': '#003663', 'surface-container-high': '#dee8ff', 'on-primary-container': '#cbffc2', 'surface': '#f9f9ff', 'surface-cream': '#FCFBF7', 'primary-container': '#2e7d32', 'on-tertiary-container': '#caffc2', 'inverse-surface': '#263143' }, 'borderRadius': { 'DEFAULT': '0.25rem', 'lg': '0.5rem', 'xl': '0.75rem', 'full': '9999px' }, 'spacing': { 'space-md': '1rem', 'space-lg': '1.5rem', 'gutter-mobile': '1rem', 'space-xl': '2.5rem', 'space-sm': '0.5rem', 'gutter': '1.5rem', 'space-xs': '0.25rem', 'margin-mobile': '1.25rem', 'margin': '3rem' }, 'fontFamily': { 'body-sm': ['Inter'], 'headline-lg': ['Plus Jakarta Sans'], 'body-md': ['Inter'], 'headline-md': ['Plus Jakarta Sans'], 'headline-sm': ['Plus Jakarta Sans'], 'display-hero-mobile': ['Plus Jakarta Sans'], 'headline-lg-mobile': ['Plus Jakarta Sans'], 'label-lg': ['Inter'], 'body-lg': ['Inter'], 'label-caps': ['Plus Jakarta Sans'], 'label-md': ['Inter'], 'display-hero': ['Plus Jakarta Sans'] }, 'fontSize': { 'body-sm': ['13px', { 'lineHeight': '20px', 'fontWeight': '400' }], 'headline-lg': ['36px', { 'lineHeight': '44px', 'letterSpacing': '-0.015em', 'fontWeight': '600' }], 'body-md': ['15px', { 'lineHeight': '24px', 'fontWeight': '400' }], 'headline-md': ['24px', { 'lineHeight': '32px', 'fontWeight': '600' }], 'headline-sm': ['20px', { 'lineHeight': '28px', 'fontWeight': '600' }], 'display-hero-mobile': ['32px', { 'lineHeight': '40px', 'letterSpacing': '-0.01em', 'fontWeight': '700' }], 'headline-lg-mobile': ['26px', { 'lineHeight': '34px', 'letterSpacing': '-0.01em', 'fontWeight': '600' }], 'label-lg': ['14px', { 'lineHeight': '20px', 'letterSpacing': '0.01em', 'fontWeight': '600' }], 'body-lg': ['18px', { 'lineHeight': '28px', 'fontWeight': '400' }], 'label-caps': ['11px', { 'lineHeight': '16px', 'letterSpacing': '0.08em', 'fontWeight': '700' }], 'label-md': ['12px', { 'lineHeight': '16px', 'letterSpacing': '0.02em', 'fontWeight': '600' }], 'display-hero': ['48px', { 'lineHeight': '56px', 'letterSpacing': '-0.02em', 'fontWeight': '700' }] } } } };</script></head><body class="bg-surface-cream text-on-surface antialiased"><header class="fixed top-0 left-0 w-full z-50 bg-surface-cream/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><a class="flex items-center gap-3" data-path="learning-hub" href="#"><img alt="ShikshaSetu Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1W2aZcDXdVsDum3PAY2yLA5x8ncCRslnoUi8la77ThfCLGOghDeIuwRzcd2TtWBBUclb3a1qz6kK70-WNIWokuqv4GmUZT8jnDaxJw7uZ8fZ9qQmzqrVyY4pEklmwFYQ0Q_tMs6-VEyLpjeSBkOQoCf2z9CNd-RSqxXiqzgPBcmbxbPtRbTwPu9druPoczObonheQ9EiBxPgiTeOrkiBbqEcMi_uOxGADkpb6hcE6duYqP087xgR5abAL8"/><span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold">ShikshaSetu</span></a><nav class="hidden xl:flex items-center gap-space-lg" data-active-classes="text-primary font-bold"><a aria-current="page" class="transition-colors text-primary font-bold" data-path="learning-hub" href="#">Learning Hub</a><a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="teach-for-a-day" href="#">Teach For A Day</a><a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="need-board" href="#">Need Board</a><a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors" data-path="impact-network" href="#">Impact Network</a></nav></div><div class="flex items-center gap-space-md"><a class="hidden sm:inline-flex items-center justify-center px-space-lg py-space-sm rounded-lg bg-leaf-green-light text-primary font-label-lg text-label-lg hover:bg-surface-container-highest transition-colors" data-path="post-a-need" href="#">Post a Need</a><a class="inline-flex items-center justify-center px-space-lg py-space-sm rounded-lg bg-primary-container text-on-primary font-label-lg text-label-lg shadow-[0_4px_12px_-2px_rgba(15,23,42,0.08)] hover:bg-primary transition-colors" data-path="volunteer-now" href="#">Volunteer Now</a><a class="flex items-center" data-path="profile" href="#"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-primary-fixed-dim" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvMKRAmRvvYq41PJePpVb46dXDFrQ4usubRbP8yB6wnJuR1xXUbmCafChWyyept6AiC59kscwzfIacUYD9g1ym75UkkYxRSq0-7vqL6aPOF_HYgd-Sla-m7RuZw3WUfNBxQyuqQ-NeEyLvN2woV3H8nhe5AQaiHRGECNkCOzWa9bvTGz2X5sbGfFIOtFjLkXjQ0cGFG5m3XXzKq0yirBwevXatYuCi7sUBU3uQXFJ88Xn_Z9rChA1P"/></a></div></div></header><main class="w-full pt-20 bg-surface-cream max-w-7xl mx-auto px-6 lg:px-12"><div class="flex flex-col w-full relative">
+<!-- Interactive Particle Canvas & Immersive Backdrop -->
+<div class="relative w-full rounded-2xl overflow-hidden bg-slate-charcoal-dark shadow-2xl py-10 px-4 sm:px-8 lg:px-12 my-6">
+<canvas class="absolute inset-0 w-full h-full pointer-events-none opacity-40 z-0" id="constellation-canvas"></canvas>
+<!-- Ambient Radial Glows -->
+<div class="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-primary-container/20 blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-secondary-container/20 blur-3xl pointer-events-none"></div>
+<div class="absolute top-1/2 left-1/3 w-80 h-80 rounded-full bg-leaf-green-vibrant/10 blur-3xl pointer-events-none"></div>
+<div class="relative z-10 max-w-6xl mx-auto flex flex-col gap-10">
+<!-- Top Gateway Header & System Telemetry -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-surface-container-highest/10">
+<div class="space-y-2">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-lowest/10 backdrop-blur-md">
+<span class="inline-block w-2.5 h-2.5 rounded-full bg-leaf-green-vibrant animate-pulse"></span>
+<span class="font-label-caps text-label-caps tracking-wider text-surface-container-lowest uppercase">K-12 Grassroots Sync • v4.8 Node</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-surface-container-lowest tracking-tight">Unified Access Gateway</h2>
+<p class="font-body-md text-body-md text-surface-container-highest/80 max-w-xl">
+            Connecting isolated rural smart classrooms with urban mentors, proctors, and philanthropic allies in real time.
+          </p>
+</div>
+<!-- Language Pill & Live Telemetry -->
+<div class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+<div class="flex items-center p-1 bg-surface-container-lowest/10 backdrop-blur-md rounded-full shadow-inner">
+<button class="lang-pill px-3 py-1 text-label-md font-label-md rounded-full bg-primary-container text-on-primary shadow-sm transition-all" onclick="setLanguage('en', this)" type="button">English</button>
+<button class="lang-pill px-3 py-1 text-label-md font-label-md rounded-full text-surface-container-highest hover:text-surface-container-lowest transition-all" onclick="setLanguage('kn', this)" type="button">ಕನ್ನಡ</button>
+<button class="lang-pill px-3 py-1 text-label-md font-label-md rounded-full text-surface-container-highest hover:text-surface-container-lowest transition-all" onclick="setLanguage('hi', this)" type="button">हिन्दी</button>
+</div>
+<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-surface-container-lowest/5 backdrop-blur-sm text-surface-container-lowest">
+<span class="material-symbols-outlined text-[18px] text-tertiary-fixed">hub</span>
+<span class="font-label-caps text-label-caps uppercase text-surface-container-highest">Edge Pi Grid: <span class="text-tertiary-fixed font-bold">1,420 Active</span></span>
+</div>
+</div>
+</div>
+<!-- Main Layout: 4 Role Cards Grid (Visual First) -->
+<div>
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-leaf-green-vibrant text-[20px]">badge</span>
+<span class="font-label-caps text-label-caps text-surface-container-highest uppercase tracking-wider">Select Persona Workspace</span>
+</div>
+<span class="font-body-sm text-body-sm text-surface-container-highest/70">Role-specific encrypted credentials</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" id="role-selector-grid">
+<!-- Role 1: Mentor -->
+<button class="role-card text-left p-5 rounded-2xl bg-surface-container-lowest/10 backdrop-blur-md hover:bg-surface-container-lowest/15 transition-all duration-300 relative group flex flex-col justify-between h-52 ring-2 ring-leaf-green-vibrant shadow-xl" id="role-card-mentor" onclick="selectRole('mentor')" type="button">
+<div class="flex items-start justify-between w-full">
+<div class="w-12 h-12 rounded-xl bg-primary-container text-on-primary flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[26px]">co_present</span>
+</div>
+<span class="px-2.5 py-0.5 rounded-full font-label-caps text-label-caps bg-leaf-green-light text-primary font-bold">ಬೋಧಕ ಮಿತ್ರ</span>
+</div>
+<div class="space-y-1">
+<p class="font-headline-sm text-headline-sm text-surface-container-lowest font-bold">Volunteer Mentor</p>
+<p class="font-body-sm text-body-sm text-surface-container-highest/80 line-clamp-2">Teach rural learners live via digital whiteboards &amp; peer pods.</p>
+</div>
+<div class="flex items-center gap-2 text-leaf-green-vibrant font-label-md text-label-md pt-2">
+<span>Open Portal</span>
+<span class="material-symbols-outlined text-[16px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+</div>
+</button>
+<!-- Role 2: Student Desk Pod -->
+<button class="role-card text-left p-5 rounded-2xl bg-surface-container-lowest/5 backdrop-blur-md hover:bg-surface-container-lowest/15 transition-all duration-300 relative group flex flex-col justify-between h-52" id="role-card-student" onclick="selectRole('student')" type="button">
+<div class="flex items-start justify-between w-full">
+<div class="w-12 h-12 rounded-xl bg-tertiary text-on-tertiary flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[26px]">groups_3</span>
+</div>
+<span class="px-2.5 py-0.5 rounded-full font-label-caps text-label-caps bg-surface-container-lowest/20 text-surface-container-lowest font-bold">ವಿದ್ಯಾರ್ಥಿ ಗುಂಪು</span>
+</div>
+<div class="space-y-1">
+<p class="font-headline-sm text-headline-sm text-surface-container-lowest font-bold">Student Pod</p>
+<p class="font-body-sm text-body-sm text-surface-container-highest/80 line-clamp-2">Desk tablet sync with Star Code, STEM puzzles, and whiteboard canvas.</p>
+</div>
+<div class="flex items-center gap-2 text-surface-container-highest font-label-md text-label-md pt-2">
+<span>Quick Pod Connect</span>
+<span class="material-symbols-outlined text-[16px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+</div>
+</button>
+<!-- Role 3: School Admin / Proctor -->
+<button class="role-card text-left p-5 rounded-2xl bg-surface-container-lowest/5 backdrop-blur-md hover:bg-surface-container-lowest/15 transition-all duration-300 relative group flex flex-col justify-between h-52" id="role-card-admin" onclick="selectRole('admin')" type="button">
+<div class="flex items-start justify-between w-full">
+<div class="w-12 h-12 rounded-xl bg-secondary text-on-secondary flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[26px]">school</span>
+</div>
+<span class="px-2.5 py-0.5 rounded-full font-label-caps text-label-caps bg-surface-container-lowest/20 text-surface-container-lowest font-bold">ಶಾಲಾ ಸಂಯೋಜಕ</span>
+</div>
+<div class="space-y-1">
+<p class="font-headline-sm text-headline-sm text-surface-container-lowest font-bold">School Admin</p>
+<p class="font-body-sm text-body-sm text-surface-container-highest/80 line-clamp-2">DISE console, classroom smart TV projection router, and attendance mesh.</p>
+</div>
+<div class="flex items-center gap-2 text-surface-container-highest font-label-md text-label-md pt-2">
+<span>Proctor Center</span>
+<span class="material-symbols-outlined text-[16px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+</div>
+</button>
+<!-- Role 4: CSR Partner / Donor -->
+<button class="role-card text-left p-5 rounded-2xl bg-surface-container-lowest/5 backdrop-blur-md hover:bg-surface-container-lowest/15 transition-all duration-300 relative group flex flex-col justify-between h-52" id="role-card-donor" onclick="selectRole('donor')" type="button">
+<div class="flex items-start justify-between w-full">
+<div class="w-12 h-12 rounded-xl bg-primary text-on-primary flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[26px]">volunteer_activism</span>
+</div>
+<span class="px-2.5 py-0.5 rounded-full font-label-caps text-label-caps bg-surface-container-lowest/20 text-surface-container-lowest font-bold">ಶಿಕ್ಷಣ ದಾನಿ</span>
+</div>
+<div class="space-y-1">
+<p class="font-headline-sm text-headline-sm text-surface-container-lowest font-bold">CSR Philanthropy</p>
+<p class="font-body-sm text-body-sm text-surface-container-highest/80 line-clamp-2">80G audits, real-time smart TV sponsorship ROI &amp; fund telemetry.</p>
+</div>
+<div class="flex items-center gap-2 text-surface-container-highest font-label-md text-label-md pt-2">
+<span>Impact Ledger</span>
+<span class="material-symbols-outlined text-[16px] transition-transform group-hover:translate-x-1">arrow_forward</span>
+</div>
+</button>
+</div>
+</div>
+<!-- Asymmetric Editorial 60/40 Split: Interactive Form & Live Node Visualizer -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- 60% Left Section: Dynamic Authentication Form -->
+<div class="lg:col-span-7 bg-surface-cream rounded-2xl p-6 sm:p-8 shadow-2xl relative">
+<!-- Role Active Banner -->
+<div class="flex items-center justify-between pb-6 mb-6 border-b border-surface-earth">
+<div>
+<span class="font-label-caps text-label-caps uppercase text-primary font-bold" id="role-sublabel">Volunteer Authentication</span>
+<h3 class="font-headline-md text-headline-md text-on-surface" id="role-title">Remote Educator Sign In</h3>
+</div>
+<div class="w-12 h-12 rounded-xl bg-leaf-green-light text-primary flex items-center justify-center shadow-sm" id="role-badge-icon">
+<span class="material-symbols-outlined text-[28px]">co_present</span>
+</div>
+</div>
+<!-- Dynamic Form Container -->
+<form class="space-y-5" id="auth-form" onsubmit="event.preventDefault(); triggerAuthSuccess();">
+<!-- Dynamic Fields Injection Slot -->
+<div class="space-y-4" id="dynamic-form-fields">
+<!-- Default: Mentor Content -->
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface">Institutional / Corporate Email</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-3 text-outline text-[20px]">mail</span>
+<input class="w-full pl-10 pr-4 py-2.5 bg-surface-container-lowest rounded-lg border-0 shadow-sm ring-1 ring-outline-variant focus:ring-2 focus:ring-primary focus:outline-none font-body-md text-body-md text-on-surface" id="mentor-email" placeholder="sneha.rao@infosys-foundation.org" required="" type="email"/>
+</div>
+</div>
+<div class="space-y-1">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-on-surface">One-Time Secure Key / Passcode</label>
+<a class="font-label-md text-label-md text-primary hover:underline" href="#">Resend via WhatsApp/SMS</a>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-3 text-outline text-[20px]">lock</span>
+<input class="w-full pl-10 pr-4 py-2.5 bg-surface-container-lowest rounded-lg border-0 shadow-sm ring-1 ring-outline-variant focus:ring-2 focus:ring-primary focus:outline-none font-body-md text-body-md text-on-surface" id="mentor-passcode" placeholder="••••••••" required="" type="password"/>
+</div>
+</div>
+</div>
+<!-- Device Persistence Toggle & Help -->
+<div class="flex items-center justify-between pt-2">
+<label class="inline-flex items-center gap-2.5 cursor-pointer">
+<input checked="" class="w-4 h-4 rounded text-primary focus:ring-primary accent-primary" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Remember this classroom console</span>
+</label>
+<a class="font-body-sm text-body-sm text-secondary hover:underline flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[16px]">help_center</span>
+<span>Proctor Helpline</span>
+</a>
+</div>
+<!-- Submission Action -->
+<button class="w-full py-3.5 px-6 rounded-lg bg-primary-container text-on-primary font-label-lg text-label-lg shadow-md hover:bg-primary transition-all flex items-center justify-center gap-2" id="submit-btn" type="submit">
+<span class="material-symbols-outlined text-[20px]">login</span>
+<span id="submit-btn-text">Authenticate &amp; Start Live Session</span>
+</button>
+<!-- SSO / Federated Single Click -->
+<div class="pt-4 border-t border-surface-earth flex flex-col gap-3" id="sso-options">
+<div class="text-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Enterprise &amp; CSR SSO Integrations</span>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex items-center justify-center gap-2 py-2 px-4 rounded-lg bg-surface-container-lowest shadow-sm hover:bg-surface-earth transition-colors font-label-md text-label-md text-on-surface" onclick="triggerQuickSSO('Corporate Google Workspace')" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary">domain</span>
+<span>Google Workspace</span>
+</button>
+<button class="flex items-center justify-center gap-2 py-2 px-4 rounded-lg bg-surface-container-lowest shadow-sm hover:bg-surface-earth transition-colors font-label-md text-label-md text-on-surface" onclick="triggerQuickSSO('DIKSHA National Portal SSO')" type="button">
+<span class="material-symbols-outlined text-[18px] text-primary">verified_user</span>
+<span>DIKSHA Karnataka</span>
+</button>
+</div>
+</div>
+<!-- 1-Click Fast Sandbox Testing Personas -->
+<div class="bg-surface-earth rounded-xl p-4 mt-6">
+<div class="flex items-center justify-between mb-2.5">
+<span class="font-label-caps text-label-caps uppercase text-on-surface-variant font-bold flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-tertiary">bolt</span>
+                  Instant Evaluator Sandbox (1-Click)
+                </span>
+<span class="font-label-caps text-label-caps text-leaf-green-vibrant font-bold">Zero Setup</span>
+</div>
+<div class="flex flex-wrap gap-2">
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-lowest hover:bg-leaf-green-light font-label-md text-label-md text-on-surface hover:text-primary transition-all shadow-sm" onclick="quickFill('mentor')" type="button">
+                  <span class="material-symbols-outlined text-[16px] text-primary">bolt</span>
+                  <span>Sneha Rao (Infosys Mentor)</span>
+                </button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-lowest hover:bg-trust-blue-light font-label-md text-label-md text-on-surface hover:text-secondary transition-all shadow-sm" onclick="quickFill('student')" type="button">
+                  <span class="material-symbols-outlined text-[16px] text-secondary">bolt</span>
+                  <span>Desk Pod #04 (Dharwad Model School)</span>
+                </button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-lowest hover:bg-leaf-green-light font-label-md text-label-md text-on-surface hover:text-primary transition-all shadow-sm" onclick="quickFill('admin')" type="button">
+                  <span class="material-symbols-outlined text-[16px] text-primary">bolt</span>
+                  <span>Headmaster Ramesh Patil</span>
+                </button>
+</div>
+</div>
+</form>
+</div>
+<!-- 40% Right Section: Visual Infrastructure Card & Real-time Edge Topology -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<!-- Live Classroom Preview Box -->
+<div class="bg-surface-container-lowest/10 backdrop-blur-md rounded-2xl p-6 border border-surface-container-highest/10 text-surface-container-lowest shadow-xl">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-leaf-green-vibrant animate-ping"></span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-leaf-green-vibrant">Live Classroom Mesh</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-lowest/20 font-label-caps text-label-caps">Node #KA-DHW-402</span>
+</div>
+<!-- Interactive Topology Visual Container -->
+<div class="relative h-44 rounded-xl overflow-hidden bg-slate-charcoal-dark/70 flex items-center justify-center p-4">
+<!-- Abstract classroom pod diagram -->
+<svg class="w-full h-full text-surface-container-lowest" fill="none" viewbox="0 0 320 150">
+<!-- Outer Mesh Connections -->
+<path d="M160 30 L60 80 M160 30 L260 80 M60 80 L160 130 M260 80 L160 130 M160 30 L160 130" stroke="currentColor" stroke-dasharray="3 3" stroke-opacity="0.25"></path>
+<!-- Center Node (Classroom Smart TV / Pi Gateway) -->
+<circle class="animate-pulse" cx="160" cy="80" fill="#2e7d32" r="18"></circle>
+<text fill="#ffffff" font-size="10" font-weight="bold" text-anchor="middle" x="160" y="84">PI HUB</text>
+<!-- Pod 1 -->
+<circle cx="60" cy="80" fill="#0060a8" r="12"></circle>
+<text fill="#ffffff" font-size="8" text-anchor="middle" x="60" y="83">POD 1</text>
+<!-- Pod 2 -->
+<circle cx="260" cy="80" fill="#0060a8" r="12"></circle>
+<text fill="#ffffff" font-size="8" text-anchor="middle" x="260" y="83">POD 2</text>
+<!-- Remote Mentor Stream -->
+<circle cx="160" cy="30" fill="#4caf50" r="12"></circle>
+<text fill="#ffffff" font-size="7" text-anchor="middle" x="160" y="33">MENTOR</text>
+<!-- Donor / CSR Auditor -->
+<circle cx="160" cy="130" fill="#d3e4ff" r="12"></circle>
+<text fill="#003663" font-size="7" text-anchor="middle" x="160" y="133">CSR</text>
+</svg>
+<!-- Live Ping Pill Overlay -->
+<div class="absolute bottom-2 left-3 right-3 flex items-center justify-between text-surface-container-highest font-label-caps text-label-caps bg-slate-charcoal-dark/90 px-3 py-1.5 rounded-lg">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-leaf-green-vibrant">speed</span>
+                  Latency: 18ms (Starlink + Edge Mesh)
+                </span>
+<span class="text-tertiary-fixed font-bold">100% Peer Packet Sync</span>
+</div>
+</div>
+<!-- Persona Snapshot Card -->
+<div class="mt-4 pt-4 border-t border-surface-container-highest/10 space-y-2">
+<p class="font-headline-sm text-headline-sm text-surface-container-lowest" id="sidebar-role-quote">
+                "Real-time whiteboard low-bandwidth sync makes teaching rural Karnataka students effortless."
+              </p>
+<div class="flex items-center gap-3 pt-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-lowest/20 flex items-center justify-center font-bold text-label-md">
+                  SR
+                </div>
+<div>
+<p class="font-label-md text-label-md font-bold text-surface-container-lowest" id="sidebar-role-author">Sneha Rao, Senior Engineer</p>
+<p class="font-body-sm text-body-sm text-surface-container-highest/70" id="sidebar-role-meta">32 Sessions completed • Dharwad Cluster</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Trust Badges & Protocols -->
+<div class="bg-surface-container-lowest/5 backdrop-blur-md rounded-2xl p-5 border border-surface-container-highest/10 text-surface-container-lowest space-y-3">
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-surface-container-highest flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed">verified</span>
+              Institutional Safeguards &amp; Compliance
+            </span>
+<div class="grid grid-cols-2 gap-2 text-surface-container-highest font-body-sm text-body-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-leaf-green-vibrant">check_circle</span>
+<span>POCSO Child-Safe UI</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-leaf-green-vibrant">check_circle</span>
+<span>AES-256 Whiteboard P2P</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-leaf-green-vibrant">check_circle</span>
+<span>Govt Karnataka DISE Validated</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-leaf-green-vibrant">check_circle</span>
+<span>Zero Private Data Logging</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Emergency Toast / Feedback Notification -->
+<div class="hidden transform transition-all duration-300 fixed bottom-8 right-8 z-50 p-4 rounded-xl shadow-2xl bg-surface-cream text-on-surface border-l-4 border-primary max-w-sm flex items-start gap-3" id="auth-toast">
+<span class="material-symbols-outlined text-primary text-[24px]">verified</span>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface" id="toast-title">Authentication Success</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant" id="toast-message">Connecting to Classroom Edge Gateway...</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Dynamic Role State Machine
+  const roleConfigs = {
+    mentor: {
+      title: "Remote Educator Sign In",
+      sublabel: "Volunteer Authentication",
+      badgeIcon: "co_present",
+      badgeBg: "bg-leaf-green-light",
+      badgeColor: "text-primary",
+      btnText: "Authenticate & Start Live Session",
+      quote: '"Real-time whiteboard low-bandwidth sync makes teaching rural Karnataka students effortless."',
+      author: "Sneha Rao, Senior Engineer",
+      meta: "32 Sessions completed • Dharwad Cluster",
+      fieldsHtml: `
+        <div class="space-y-1">
+          <label class="font-label-md text-label-md text-on-surface">Institutional / Corporate Email</label>
+          <div class="relative">
+            <span class="material-symbols-outlined absolute left-3 top-3 text-outline text-[20px]">mail</span>
+            <input type="email" id="input-mentor-email" required placeholder="sneha.rao@infosys-foundation.org" class="w-full pl-10 pr-4 py-2.5 bg-surface-container-lowest rounded-lg border-0 shadow-sm ring-1 ring-outline-variant focus:ring-2 focus:ring-primary focus:outline-none font-body-md text-body-md text-on-surface">
+          </div>
+        </div>
+        <div class="space-y-1">
+          <div class="flex items-center justify-between">
+            <label class="font-label-md text-label-md text-on-surface">One-Time Secure Key / Passcode</label>
+            <a href="#" class="font-label-md text-label-md text-primary hover:underline">Resend via WhatsApp</a>
+          </div>
+          <div class="relative">
+            <span class="material-symbols-outlined absolute left-3 top-3 text-outline text-[20px]">lock</span>
+            <input type="password" id="input-mentor-passcode" required placeholder="••••••••" value="demo1234" class="w-full pl-10 pr-4 py-2.5 bg-surface-container-lowest rounded-lg border-0 shadow-sm ring-1 ring-outline-variant focus:ring-2 focus:ring-primary focus:outline-none font-body-md text-body-md text-on-surface">
+          </div>
+        </div>
+      `,
+      showSSO: true
+    },
+    student: {
+      title: "Classroom Pod Star Connect",
+      sublabel: "Student Desk Gateway (Pod #01-#08)",
+      badgeIcon: "groups_3",
+      badgeBg: "bg-trust-blue-light",
+      badgeColor: "text-secondary",
+      btnText: "Join Live Pod Science Canvas",
+      quote: '"Desk Pod #04 solved today\'s solar energy circuit puzzle and synchronized live with Bengaluru!"',
+      author: "Govt Model Primary Dharwad",
+      meta: "Desk Pod #04: Ananya, Chetan, Kavya, Imran",
+      fieldsHtml: `
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="space-y-1">
+            <label class="font-label-md text-label-md text-on-surface">Assigned School Unit</label>
+            <div class="relative">
+              <span class="material-symbols-outlined absolute left-3 top-3 text-outline text-[20px]">location_on</span>
+              <select class="w-full pl-10 pr-4 py-2.5 bg-surface-container-lowest rounded-lg border-0 shadow-sm ring-1 ring-outline-variant focus:ring-2 focus:ring-primary focus:outline-none font-body-md text-body-md text-on-surface">
+                <option>Govt Model Primary School - Dharwad</option>
+                <option>Hunasagi Rural Higher Primary - Yadgir</option>
+                <option>Hosakote Adarsha Vidyalaya - Bengaluru Rural</option>
+              </select>
+            </div>
+          </div>
+          <div class="space-y-1">
+            <label class="font-label-md text-label-md text-on-surface">Desk Pod Number</label>
+            <div class="relative">
+              <span class="material-symbols-outlined absolute left-3 top-3 text-outline text-[20px]">tablet_mac</span>
+              <select id="student-pod-select" class="w-full pl-10 pr-4 py-2.5 bg-surface-container-lowest rounded-lg border-0 shadow-sm ring-1 ring-outline-variant focus:ring-2 focus:ring-primary focus:outline-none font-body-md text-body-md text-on-surface">
+                <option value="4">Desk Pod #04 (Banyan Tree Team)</option>
+                <option value="1">Desk Pod #01 (Peepal Pod)</option>
+                <option value="2">Desk Pod #02 (Neem Pod)</option>
+                <option value="3">Desk Pod #03 (Teak Pod)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="space-y-1">
+          <label class="font-label-md text-label-md text-on-surface">Daily Pod Star Code / Picture PIN</label>
+          <div class="grid grid-cols-4 gap-3 text-center">
+            <button type="button" class="p-3 rounded-lg bg-surface-container-lowest hover:bg-leaf-green-light border-0 ring-1 ring-outline-variant focus:ring-2 focus:ring-primary font-bold flex flex-col items-center gap-1">
+              <span class="material-symbols-outlined text-[24px] text-amber-500">star</span>
+              <span class="text-[10px] font-label-caps text-on-surface-variant">STAR</span>
+            </button>
+            <button type="button" class="p-3 rounded-lg bg-leaf-green-light ring-2 ring-primary font-bold flex flex-col items-center gap-1">
+              <span class="material-symbols-outlined text-[24px] text-primary">eco</span>
+              <span class="text-[10px] font-label-caps text-primary font-bold">SPROUT</span>
+            </button>
+            <button type="button" class="p-3 rounded-lg bg-surface-container-lowest hover:bg-leaf-green-light border-0 ring-1 ring-outline-variant focus:ring-2 focus:ring-primary font-bold flex flex-col items-center gap-1">
+              <span class="material-symbols-outlined text-[24px] text-secondary">water_drop</span>
+              <span class="text-[10px] font-label-caps text-on-surface-variant">DROP</span>
+            </button>
+            <button type="button" class="p-3 rounded-lg bg-surface-container-lowest hover:bg-leaf-green-light border-0 ring-1 ring-outline-variant focus:ring-2 focus:ring-primary font-bold flex flex-col items-center gap-1">
+              <span class="material-symbols-outlined text-[24px] text-amber-500">light_mode</span>
+              <span class="text-[10px] font-label-caps text-on-surface-variant">SUN</span>
+            </button>
+          </div>
+          <p class="font-body-sm text-body-sm text-on-surface-variant pt-1">Or point pod tablet camera at Classroom Smart TV QR</p>
+        </div>
+      `,
+      showSSO: false
+    },
+    admin: {
+      title: "School Admin & Proctor Router",
+      sublabel: "Govt School Proctor Console",
+      badgeIcon: "school",
+      badgeBg: "bg-surface-container-high",
+      badgeColor: "text-secondary",
+      btnText: "Launch Classroom Smart TV Hub",
+      quote: '"Our 40-inch display links right to Karnataka EdTech servers. Zero lag on Starlink mesh."',
+      author: "Ramesh Patil, Headmaster",
+      meta: "DISE Code: 29090100402 • 12 Active Pod Tablets",
+      fieldsHtml: `
+        <div class="space-y-1">
+          <label class="font-label-md text-label-md text-on-surface">11-Digit DISE School Code</label>
+          <div class="relative">
+            <span class="material-symbols-outlined absolute left-3 top-3 text-outline text-[20px]">pin</span>
+            <input type="text" id="admin-dise-code" required placeholder="29090100402" value="29090100402" class="w-full pl-10 pr-4 py-2.5 bg-surface-container-lowest rounded-lg border-0 shadow-sm ring-1 ring-outline-variant focus:ring-2 focus:ring-primary focus:outline-none font-body-md text-body-md text-on-surface">
+          </div>
+        </div>
+        <div class="space-y-1">
+          <label class="font-label-md text-label-md text-on-surface">Proctor / Headmaster Official Gov ID</label>
+          <div class="relative">
+            <span class="material-symbols-outlined absolute left-3 top-3 text-outline text-[20px]">badge</span>
+            <input type="text" id="admin-id" required placeholder="HM-KAR-8921" value="HM-KAR-8921" class="w-full pl-10 pr-4 py-2.5 bg-surface-container-lowest rounded-lg border-0 shadow-sm ring-1 ring-outline-variant focus:ring-2 focus:ring-primary focus:outline-none font-body-md text-body-md text-on-surface">
+          </div>
+        </div>
+      `,
+      showSSO: true
+    },
+    donor: {
+      title: "CSR Impact & 80G Tax Portal",
+      sublabel: "Philanthropic Investor Access",
+      badgeIcon: "volunteer_activism",
+      badgeBg: "bg-leaf-green-light",
+      badgeColor: "text-tertiary",
+      btnText: "Open Real-Time Audit Telemetry",
+      quote: '"100% verified classroom telemetry proves every rupee spent directly lights up a classroom screen."',
+      author: "Anand Mahindra CSR Trust",
+      meta: "140 Village Classrooms Sponsored • FY 2024-25",
+      fieldsHtml: `
+        <div class="space-y-1">
+          <label class="font-label-md text-label-md text-on-surface">Corporate CSR Partner ID / CIN</label>
+          <div class="relative">
+            <span class="material-symbols-outlined absolute left-3 top-3 text-outline text-[20px]">corporate_fare</span>
+            <input type="text" id="donor-cin" required placeholder="CSR-IND-99420-KAR" value="CSR-INFOSYS-2024" class="w-full pl-10 pr-4 py-2.5 bg-surface-container-lowest rounded-lg border-0 shadow-sm ring-1 ring-outline-variant focus:ring-2 focus:ring-primary focus:outline-none font-body-md text-body-md text-on-surface">
+          </div>
+        </div>
+        <div class="space-y-1">
+          <label class="font-label-md text-label-md text-on-surface">Investor Magic Key / Token</label>
+          <div class="relative">
+            <span class="material-symbols-outlined absolute left-3 top-3 text-outline text-[20px]">key</span>
+            <input type="password" id="donor-token" required placeholder="••••••••••••" value="magic_csr_token_99" class="w-full pl-10 pr-4 py-2.5 bg-surface-container-lowest rounded-lg border-0 shadow-sm ring-1 ring-outline-variant focus:ring-2 focus:ring-primary focus:outline-none font-body-md text-body-md text-on-surface">
+          </div>
+        </div>
+      `,
+      showSSO: false
+    }
+  };
+
+  let currentRole = 'mentor';
+
+  function selectRole(roleKey) {
+    currentRole = roleKey;
+    const config = roleConfigs[roleKey];
+    if (!config) return;
+
+    // Update active state on cards
+    document.querySelectorAll('.role-card').forEach(card => {
+      card.classList.remove('ring-2', 'ring-leaf-green-vibrant', 'shadow-xl', 'bg-surface-container-lowest/15');
+      card.classList.add('bg-surface-container-lowest/5');
+    });
+
+    const activeCard = document.getElementById(`role-card-${roleKey}`);
+    if (activeCard) {
+      activeCard.classList.add('ring-2', 'ring-leaf-green-vibrant', 'shadow-xl', 'bg-surface-container-lowest/15');
+      activeCard.classList.remove('bg-surface-container-lowest/5');
+    }
+
+    // Populate Dynamic Content
+    document.getElementById('role-title').textContent = config.title;
+    document.getElementById('role-sublabel').textContent = config.sublabel;
+    document.getElementById('submit-btn-text').textContent = config.btnText;
+    
+    // Icon
+    const badgeEl = document.getElementById('role-badge-icon');
+    badgeEl.className = `w-12 h-12 rounded-xl flex items-center justify-center shadow-sm ${config.badgeBg} ${config.badgeColor}`;
+    badgeEl.innerHTML = `<span class="material-symbols-outlined text-[28px]">${config.badgeIcon}</span>`;
+
+    // Dynamic Fields
+    document.getElementById('dynamic-form-fields').innerHTML = config.fieldsHtml;
+
+    // SSO visibility
+    const ssoEl = document.getElementById('sso-options');
+    ssoEl.style.display = config.showSSO ? 'flex' : 'none';
+
+    // Sidebar Quote
+    document.getElementById('sidebar-role-quote').textContent = config.quote;
+    document.getElementById('sidebar-role-author').textContent = config.author;
+    document.getElementById('sidebar-role-meta').textContent = config.meta;
+  }
+
+  function quickFill(role) {
+    selectRole(role);
+    showToast(`Quick profile loaded: ${role.toUpperCase()}`, "All sandbox tokens validated. Ready to enter.");
+  }
+
+  function triggerAuthSuccess() {
+    showToast("Identity Verified!", `Accessing secure session for role: ${currentRole.toUpperCase()}`);
+  }
+
+  function triggerQuickSSO(provider) {
+    showToast(`SSO Handshake: ${provider}`, "Validating Karnataka EdTech single-sign-on certificate...");
+  }
+
+  function showToast(title, msg) {
+    const toast = document.getElementById('auth-toast');
+    document.getElementById('toast-title').textContent = title;
+    document.getElementById('toast-message').textContent = msg;
+    toast.classList.remove('hidden');
+    setTimeout(() => {
+      toast.classList.add('hidden');
+    }, 4500);
+  }
+
+  function setLanguage(lang, buttonEl) {
+    document.querySelectorAll('.lang-pill').forEach(btn => {
+      btn.className = "lang-pill px-3 py-1 text-label-md font-label-md rounded-full text-surface-container-highest hover:text-surface-container-lowest transition-all";
+    });
+    buttonEl.className = "lang-pill px-3 py-1 text-label-md font-label-md rounded-full bg-primary-container text-on-primary shadow-sm transition-all";
+    showToast("Locale Updated", `Language set to ${lang.toUpperCase()}`);
+  }
+
+  // Interactive Floating Constellation Particle Animation (Classroom Mesh)
+  (function initCanvas() {
+    const canvas = document.getElementById('constellation-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particles = [];
+
+    function resize() {
+      width = canvas.width = canvas.parentElement.offsetWidth;
+      height = canvas.height = canvas.parentElement.offsetHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.vx = (Math.random() - 0.5) * 0.45;
+        this.vy = (Math.random() - 0.5) * 0.45;
+        this.radius = Math.random() * 2 + 1;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > width) this.vx *= -1;
+        if (this.y < 0 || this.y > height) this.vy *= -1;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = '#88d982';
+        ctx.fill();
+      }
+    }
+
+    const count = Math.min(Math.floor((width * height) / 12000), 55);
+    for (let i = 0; i < count; i++) {
+      particles.push(new Particle());
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 110) {
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(136, 217, 130, ${0.25 * (1 - dist / 110)})`;
+            ctx.lineWidth = 0.8;
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(animate);
+    }
+    animate();
+  })();
+</script></main><footer class="w-full bg-surface-earth mt-margin"><div class="max-w-7xl mx-auto px-6 lg:px-12 py-space-xl"><div class="grid grid-cols-1 md:grid-cols-4 gap-space-xl"><div class="space-y-space-sm md:col-span-1"><div class="flex items-center gap-2"><span class="font-headline-sm text-headline-sm text-primary font-bold">ShikshaSetu</span></div><p class="font-body-sm text-body-sm text-on-surface-variant">Bridging grassroots classrooms with passionate mentors, authentic resources, and measurable social impact.</p><div class="pt-space-xs flex items-center gap-2"><span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-trust-blue-light text-secondary font-label-caps text-label-caps"><span class="material-symbols-outlined text-[14px]">verified</span> verified non-profit</span></div></div><div><div class="font-label-caps text-label-caps uppercase text-on-surface-variant tracking-wider mb-space-sm">Ecosystem</div><ul class="space-y-2"><li class="leading-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="learning-hub" href="#">Learning Hub</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="teach-for-a-day" href="#">Teach For A Day</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="need-board" href="#">Classroom Needs</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="impact-network" href="#">Impact Analytics</a></li></ul></div><div><div class="font-label-caps text-label-caps uppercase text-on-surface-variant tracking-wider mb-space-sm">Trust &amp; Ethics</div><ul class="space-y-2"><li class="leading-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="transparency-charter" href="#">Transparency Charter</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="school-verification" href="#">School Verification</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="child-safety" href="#">Child Safety Protocols</a></li><li class="leading-none"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="annual-reports" href="#">Annual Reports</a></li></ul></div><div><div class="font-label-caps text-label-caps uppercase text-on-surface-variant tracking-wider mb-space-sm">Stay Connected</div><p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">Subscribe for monthly grassroots updates and volunteer field dispatches.</p><div class="flex items-center gap-space-xs"><input class="w-full px-space-sm py-2 bg-surface-cream text-on-surface font-body-sm text-body-sm rounded-lg border-0 ring-1 ring-outline-variant focus:ring-2 focus:ring-primary focus:outline-none" placeholder="Your email address" type="email"/><button class="px-space-md py-2 bg-primary text-on-primary font-label-md text-label-md rounded-lg hover:bg-primary-container transition-colors shrink-0">Join</button></div></div></div><div class="mt-space-xl pt-space-lg flex flex-col sm:flex-row items-center justify-between gap-space-md text-on-surface-variant"><p class="font-body-sm text-body-sm">© 2024 ShikshaSetu Foundation. Dedicated to educational equity.</p><div class="flex items-center gap-space-md"><span class="inline-flex items-center gap-1 font-label-md text-label-md"><span class="material-symbols-outlined text-[16px] text-tertiary">shield</span> ISO 9001 Certified</span><span class="inline-flex items-center gap-1 font-label-md text-label-md"><span class="material-symbols-outlined text-[16px] text-tertiary">public</span> GuideStar Platinum</span></div></div></div></footer></body></html>
